@@ -1,0 +1,21 @@
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: 'smtp.gmail.com:465'
+  smtp_from: 'email@example.com'
+
+route:
+  receiver: main-app-alert
+  group_by: [main_group]
+  # repeat_interval: 4h
+
+receivers:
+- name: main-app-alert
+  email_configs:
+  - smarthost: 'smtp.gmail.com:587'
+    auth_username: 'kooroshsafeashrafi@gmail.com'
+    auth_password: "******************"
+    from: 'main-app@domain.com'
+    to: 'kooroshsafeashrafi@gmail.com'
+  webhook_configs:
+  - url: 'https://www.google.com/test'
+    send_resolved: false
